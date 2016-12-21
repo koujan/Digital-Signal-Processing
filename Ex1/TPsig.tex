@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\pagestyle{empty}
+%\pagestyle{myheadings}
+%\pagenumbering
+
+\input ../../../../amiga
+%\markright{Département Mesures Physiques	\hfill  IUT La Creusot}
+%\markright{Département Mesures Physiques	\hfill IUT Le Creusot - }
+
+%\thepage
+%Programmation en Java - 1ère année
+
+\parindent 10mm
+\oddsidemargin 0mm
+\topmargin -25mm
+\textwidth 160mm
+\textheight 255mm
+
+\long\def\comment#1{}
+\newcounter{quest}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercice}{$\bullet$ Exercice}
+\newtheorem{exercise}{$\bullet$ Exercice}
+\newtheorem{syntaxe}{$\bullet$ Syntaxe}
+\newtheorem{remarque}{\indent Remarque}
+\newcommand{\bv}{\begin{verbatim}}
+\newcommand{\ev}{\end{verbatim}}
+
+%\newtheorem{question}{\rm{\rm Q.\usecounter{quest}}}
+%\newcommand{\q}{Q. \protect{\usecounter{quest}}}
+%\addtocounter{quest}{1}
+
+%\newtheorem{question}{}[exercice]%hérite du compteur exercice
+\newtheorem{question}{}[exercise]%hérite du compteur exercice
+
+\begin{document}
+
+%\ \vspace{-35mm}
+
+\begin{center}
+	{
+	Master {\sl ViBot}	\hfill  Université de Bourgogne\\
+	Digital Signal Processing \hfill Le Creusot\\ \  \\
+	} Practical works -- n$^o$1 \\ \ \\
+	{\sl
+	Signals\\
+	 \ \\ %\ \\
+	}
+\end{center}
+
+%\ \\ 
+
+{\exercise -- Deterministic signals} \ %\\ 
+
+{\question\ } Considering the Dirac function corresponding to Equation~(\ref{dirac}), write a {\tt matlab} function {\tt Dirac} to define a discrete signal of length {\tt N} and containing the Dirac function at the position {\tt n} ($\delta(k-n)$). Verify inside the function that $n \in [1,N]$ and display a warning if it is not the case.
+\begin{equation} \delta(k) = \left\{
+	\begin{array}{lll}
+		1 & \mbox{if}  & k=0 \\
+		0 &  &\mbox{elsewhere} 
+	\end{array} \right. \label{dirac}
+\end{equation} 
+
+{\question\ } Considering the step function $H$ corresponding to Equation~(\ref{step}), write a {\tt matlab} function {\tt step} to define a discrete signal of length {\tt N} and containing the value of the step function shifted at the position {\tt n} ($H(k-n)$). Verify inside the function that $n \in [1,N]$ and display a warning if it is not the case.
+\begin{equation} H(k) = \left\{
+	\begin{array}{lll}
+		1 & \mbox{if}  & k\geq 0 \\
+		0 & & \mbox{elsewhere} 
+	\end{array} \right.  \label{step}
+\end{equation} 
+
+{\question\ } Considering the ramp function $P(k)$ corresponding to Equation~(\ref{ramp}), write a {\tt matlab} function {\tt ramp} to define a discrete signal of length {\tt N} and containing the values of the ramp function shifted at the position {\tt n} with a slope {\tt a}  : $a.P(k-n)$. Verify inside the function that $n \in [1,N]$ and display a warning if it is not the case.
+\begin{equation} P(k) = \left\{
+	\begin{array}{lll}
+		k & \mbox{if}  & k\geq 0 \\
+		0 & & \mbox{elsewhere} 
+	\end{array} \right.  \label{ramp}
+\end{equation} 
+
+{\question\ } Considering the geometric function $G(k)$ corresponding to Equation~(\ref{geo}), write a {\tt matlab} function {\tt geo} to define a discrete signal of length {\tt N} and containing the values of the geometric function shifted at the position {\tt n} ($G(k-n)$). Verify inside the function that $n \in [1,N]$ and display a warning if it is not the case.
+\begin{equation} G(k) = \left\{
+	\begin{array}{lll}
+		a^k & \mbox{if}  & k\geq 0 \\
+		0 & & \mbox{elsewhere} 
+	\end{array} \right.  \label{geo}
+\end{equation} 
+
+{\question\ } Considering the box function $B(k)$ corresponding to Equation~(\ref{box}), write a {\tt matlab} function {\tt box} to define a discrete signal of length {\tt N} and containing the values of the box function shifted at the position {\tt n} with a half-width {\tt a}  : $B_a(k-n)$. Verify inside the function that $n \in [1+a,N-a]$ and display a warning if it is not the case.
+\begin{equation} B_a(k) = \left\{
+	\begin{array}{lll}
+		1 & \mbox{if}  & -a \leq k \leq a \\
+		0 & & \mbox{elsewhere} 
+	\end{array} \right.  \label{box}
+\end{equation} 
+
+{\question\ } Write a {\tt matlab} function {\tt sinus} to define a discrete signal of length {\tt N} and containing the values of $sin(2\pi f n T_s)$ where the parameters are the frequency, the number of periods (can be non-integer), the length {\bf or} the sampling frequency. Take care of the discrete definition of this function: the repetition of the signal defined for an integer number of periods should not produce artefacts.
+
+
+\ \\ %\\
+
+{\exercise -- Random signals} \ %\\ 
+
+{\question\ } Generate ({\tt matlab} function {\tt randn}) an observation $x_n$ (length 1000 points or more) of the normal/gaussian random process ${\cal N}$. Plot the distribution of the values of this observation.
+
+{\question\ } Same question with the uniform law of the random process ${\cal U}$ and an observation $x_u$.
+
+{\question\ } Compute the autocorrelation of the two observations. Are these noises "white"~? Conclusion~?
+
+{\question\ } Considering the observation $x_n$, give the model (parameters of $g(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-m)^2}{2\sigma^2}}$) of the distribution of $x_n$ (histogram). Plot the model and compare this model to the distribution. How to normalize this distribution to obtain an estimation of the $pdf$ of the normal process.
+
+{\question\ } Generate three binary random signals $s_1, s_2, s_3$ thanks to the instruction $round(rand(1,50))$. Generate a whole signal $s$ containing these signals at different shifts. Compute the cross-correlation between the whole signals and $s_1, s_2, s_3$.
+
+{\question\ } Compute the convolution product ($y$) of $x_n$ with the values $h=[18\,\, 8\,\, 5\,\, 2\,\, 1]$ ({\tt conv(x, h, 'same')}). Compute the cross-correlation of $x_n$ with $y$ and observe the result. Conclusion~?  
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

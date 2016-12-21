@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\pagestyle{empty}
+%\pagestyle{myheadings}
+%\pagenumbering
+
+\input ../../../../amiga
+%\markright{Département Mesures Physiques	\hfill  IUT La Creusot}
+%\markright{Département Mesures Physiques	\hfill IUT Le Creusot - }
+
+%\thepage
+%Programmation en Java - 1ère année
+
+\parindent 10mm
+\oddsidemargin 0mm
+\topmargin -25mm
+\textwidth 160mm
+\textheight 255mm
+
+\long\def\comment#1{}
+\newcounter{quest}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercice}{$\bullet$ Exercice}
+\newtheorem{exercise}{$\bullet$ Exercice}
+\newtheorem{syntaxe}{$\bullet$ Syntaxe}
+\newtheorem{remarque}{\indent Remarque}
+\newcommand{\bv}{\begin{verbatim}}
+\newcommand{\ev}{\end{verbatim}}
+
+%\newtheorem{question}{\rm{\rm Q.\usecounter{quest}}}
+%\newcommand{\q}{Q. \protect{\usecounter{quest}}}
+%\addtocounter{quest}{1}
+
+%\newtheorem{question}{}[exercice]%hérite du compteur exercice
+\newtheorem{question}{}[exercise]%hérite du compteur exercice
+
+\begin{document}
+
+%\ \vspace{-35mm}
+
+\begin{center}
+	{
+	Master {\sl ViBot}	\hfill  Université de Bourgogne\\
+	Digital Signal Processing \hfill Le Creusot\\ \  \\
+	} Practical works -- n$^o$2 \\ \ \\
+	{\sl
+	Systems\\
+	 \ \\ %\ \\
+	}
+\end{center}
+
+\ \\ 
+
+{\exercise -- Causality} \ %\\ 
+
+{\question\ } Considering the system defined by the equation $y_k=(x_k+x_{k+1})/2$, check its causality property by examining the response to the signal $H(k-4)$ or {\tt step(4,N)}. When plotting, include the abscissa range $[1:N]$.
+{\question\ } Propose a modification to obtain a causal version
+
+
+
+\ \\ %\\
+
+{\exercise -- Stability} \ %\\ 
+
+{\question\ } Program the primitive (accumulator) operator {\tt prim(f)} applied on the signal {\tt f} of length {\tt N}. The value of the vector returned by {\tt prim} at the index {\tt k} will correspond to ${\tt F}_{\tt k}$ with {\tt k} $\leq$ {\tt N}. Note $F_k=\sum_{q=-\infty}^{k}f_k$. Discuss on the result of the primitive operator applied to the signal $H(k-4)$. Is the primitive operator stable~?
+
+{\question\ } What is the impulse response of the primitive operator (in the discrete domain)~?
+
+{\question\ } Test the stability of the system defined by the equation: $y_k=x_k+2y_{k-1}$. Plot the impulse response.
+{\question\ } Test the stability of the system defined by the equation: $y_k=x_k+y_{k-1}/3$. Plot the impulse response. Write the response $y$ as a convolution operation (truncate the impulse response).
+
+\ \\ %\\
+
+{\exercise -- Invariance and linearity} \ %\\ 
+
+{\question\ } Define the following signals: ${\tt x_a=[0\, 0\,  0 \, 0 \, 1 \, 2 \, 3 \, 4 \, 5 \, 0 \, 0 \, 0 \, 0\,  0\,  0\,  0\,  0\,  0\,  0]; x_b=[0\,  0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 4 \, 3 \, 2 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0];}$. Compute the responses $y_a$, $y_b$ according to the equation $y=3x_{k-1}-2x_k+x_{k+1}$
+{\question\ } Prove the system defined by the previous equation is linear (and invariant). Write the equation as a convolution equation.
+{\question\ } Propose a nonlinear/noninvariant system.
+
+\ \\ %\\
+
+{\exercise -- Convolution} 
+
+{\question\ } Try to write a simple version of the convolution function (do no process the limits of the signal).
+
+{\question\ } Generate ({\tt matlab} function {\tt randn}) an observation $x_n$ (length 1000 points or more) of the normal/gaussian random process ${\cal N}$. Plot the distribution of the values of this observation. Compute the convolution product ($y$) of $x_n$ with the values $h=[18\,\, 8\,\, 5\,\, 2\,\, 1]$ ({\tt conv(x, h, 'same')}). Compute the cross-correlation of $x_n$ with $y$ and observe the result. Conclusion~?  
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
